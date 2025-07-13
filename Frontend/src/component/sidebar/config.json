@@ -4,16 +4,33 @@
         "Header": {"logo": "", "title":"MySite"},
         "list": [
             {
-                "title": "Batchs",
+                "title": "Home",
                 "link": "/",
                 "submenu": [
                 ]
             },
             {
-                "title": "Settings",
-                "link": "",
+                "title": "Users",
+                "link": "#",
                 "submenu": [
-                    {"title": "Profile", "link": "/settings/profile"}
+                    {"title": "Profile", "link": "#"},
+                    {"title": "Table", "link": "/users"}
+                ]
+            },
+            {
+                "title": "Documenti",
+                "link": "#",
+                "submenu": [
+                    {"title": "Config", "link": "#"},
+                    {"title": "Table", "link": "#"}
+                ]
+            },
+            {
+                "title": "Database",
+                "link": "#",
+                "submenu": [
+                    {"title": "Config", "link": "/database"},
+                    {"title": "Servizi", "link": "/services"}
                 ]
             }
         ]

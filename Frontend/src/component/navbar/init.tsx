@@ -13,7 +13,7 @@ export default function Navbar() {
             </div>
             <div className="w-full h-full flex flex-1 text-black">
                 <div className="flex-1"></div>
-                <div className="flex flex-1 flex-row items-center gap-3">
+                <div className="flex flex-1 flex-row items-center gap-10">
                 {Config.Data.Session.map((e, i)=>(
                     <span key={i}>
                         {e.title=="Msg"&&<MdEmail className="cursor-pointer size-8"/>}

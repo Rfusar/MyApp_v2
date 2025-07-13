@@ -25,10 +25,48 @@ func Init(uri, name string) (*ClientDB, error) {
 	return &ClientDB{DBConnection: uri, DBName: name, Client: client}, nil
 }
 
+func (db *ClientDB) Ping() error {
+	if db.Client == nil {
+		return fmt.Errorf("Mongo client is nil")
+	}
+	return db.Client.Ping(context.TODO(), nil)
+}
+
+
 func (db *ClientDB) ConnectDB(name string) {
 	db.Col = db.Client.Database(db.DBName).Collection(name)
 }
 
+//*SYSTEM
+func (db *ClientDB) ListCollections() ([]string, error) {
+	if db.Client == nil {
+		return nil, fmt.Errorf("Mongo client is nil")
+	}
+	collections, err := db.Client.Database(db.DBName).ListCollectionNames(context.TODO(), bson.D{})
+	if err != nil {
+		return nil, err
+	}
+	return collections, nil
+}
+
+func (db *ClientDB) CollectionStats(collectionName string) (bson.M, error) {
+	if db.Client == nil {
+		return nil, fmt.Errorf("client Mongo non inizializzato")
+	}
+	if db.DBName == "" {
+		return nil, fmt.Errorf("nome del database non specificato")
+	}
+
+	command := bson.D{{Key: "collStats", Value: collectionName}}
+
+	var result bson.M
+	err := db.Client.Database(db.DBName).RunCommand(context.TODO(), command).Decode(&result)
+	if err != nil {
+		return nil, fmt.Errorf("errore nel comando collStats: %w", err)
+	}
+
+	return result, nil
+}
 
 //TODO Aggragate (da finire)
 func (db *ClientDB) AggregateData(pipeline mongo.Pipeline) ([]bson.M, error) {

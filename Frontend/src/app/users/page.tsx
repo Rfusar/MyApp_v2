@@ -10,7 +10,7 @@ export default function Home() {
   const [data, setData] = useState<any[] | null>(null);
   const { openModal } = useModal();
 
-  async function getData(body:Record<string,any>): Promise<void> {
+  async function getData(body: Record<string, any>): Promise<void> {
     const res = await fetch("/api/db", { 
         method: "POST",
         headers: {"Content-Type": "application/json"},

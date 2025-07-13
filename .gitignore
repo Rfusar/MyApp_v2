@@ -1,5 +1,6 @@
 Frontend/.next/
 Frontend/node_modules/
 Frontend/.env.local
-Frontend/TEST_CONNECT_DB.py
+TEST
+.env
 Backend/exaple

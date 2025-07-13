@@ -3,21 +3,10 @@ import { useState, useEffect } from "react";
 import { TbXboxXFilled } from "react-icons/tb";
 import { createPortal } from "react-dom";
 import { FaRegEye } from "react-icons/fa";
-
-interface InputProps {
-  label: {
-    errorDescription: string;
-    field?: string;
-  };
-  options: {
-    type: string;
-    placeholder?: string;
-  };
-  mandatory: boolean;
-}
+import {InputProps, PopupProps} from "@/types/Dati"
 
 // Popup con animazione di discesa
-const Popup = ({ status, title, details, onClose }: { status: string; title: string; details: string; onClose: () => void }) => {
+const Popup = ({ status, title, details, onClose }: PopupProps) => {
   const [popupVisible, setPopupVisible] = useState(false);
 
   useEffect(() => {
@@ -50,11 +39,11 @@ const Popup = ({ status, title, details, onClose }: { status: string; title: str
 };
 
 export function Input({ label, options, mandatory }: InputProps) {
-  const [err, setErr] = useState("default");
-  const [viewPassword, setViewPassword] = useState("password");
-  const [showPopup, setShowPopup] = useState(false);
+  const [err, setErr] = useState<string|boolean>("default");
+  const [viewPassword, setViewPassword] = useState<string>("password");
+  const [showPopup, setShowPopup] = useState<boolean>(false);
 
-  const validation = (e) => {
+  const validation = (e:any) => {
     const { type, value, dataset } = e.target;
     let isValid = true;
 
@@ -97,9 +86,8 @@ export function Input({ label, options, mandatory }: InputProps) {
         />
         {options.type=="password"&&(
             <div className="col-span-1 flex items-center pl-3 cursor-pointer"
-                onClick={(e)=>{
+                onClick={(e:any)=>{
                     const I = e.target.parentElement.firstChild
-                    console.log(I)
                     I.type = I.type=="password"?"text":"password"
                 }}
                 >

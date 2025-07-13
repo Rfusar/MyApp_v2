@@ -1,7 +1,7 @@
 {
-    "Style": "flex flex-row justify-around items-center w-full bg-white h-[8%]",
+    "Style": "flex flex-row justify-between items-center w-full bg-white h-[8%]",
     "Data": {
-        "Header": {"logo": "", "title":"MySite"},
+        "Header": {"logo": "", "title":""},
         "Session": [
             {
                 "title": "Msg",

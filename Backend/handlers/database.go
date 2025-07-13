@@ -23,7 +23,7 @@ type RequestQuery struct {
     Query      Query  `json:"query"`      // dettagli della query
 }
 
-func GetBatchsHandler(database *db.ClientDB) http.HandlerFunc {
+func GetDatabase(database *db.ClientDB) http.HandlerFunc {
     return func(w http.ResponseWriter, r *http.Request) {
         bodyBytes, err := io.ReadAll(r.Body)
         if err != nil {

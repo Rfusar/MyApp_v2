@@ -1,14 +1,15 @@
 "use client"
+import {ReactNode} from "react"
 import { useState } from "react";
 import Link from "next/link"
 import { AiFillCaretRight, AiFillAccountBook, AiFillAlert, AiFillAliwangwang } from "react-icons/ai";
 import { GoWorkflow } from "react-icons/go";
 import Config from "./config.json";
-
+import {ListProps, DD_props} from "@/types/Dati"
 
 const event_mouseover = "transition duration-200"
 
-const List = ({check, data})=>{
+const List = ({check, data}: ListProps )=>{
     return (
         <ul
           className={`overflow-hidden transition-[max-height] duration-500 ease-in-out text-white ${
@@ -27,11 +28,11 @@ const List = ({check, data})=>{
 }
 
 
-export const Dropdown = ({ item }) => {
+export const Dropdown = ({ key, item }: DD_props ) => {
   const [isOpen, setIsOpen] = useState(false);
   const if_submenu = Array.isArray(item.submenu) && item.submenu.length > 0;
 
-  const iconMap = {
+  const iconMap: Record<string, ReactNode> = {
     Batchs: <AiFillAccountBook />,
     "Call Api": <AiFillAlert />,
     WorkFlows: <GoWorkflow />,
@@ -48,7 +49,7 @@ export const Dropdown = ({ item }) => {
       <div className={`${Config.sidebar.element}`}>
         <Link 
           href={item.link} 
-          className={`flex flex-row items-center w-full p-2 ${event_mouseover} rounded text-lg text-white ${if_submenu ? "" : "hover:translate-x-2"}`}
+          className={`flex flex-row items-center w-full p-2 ${event_mouseover} rounded text-base text-white ${if_submenu ? "" : "hover:translate-x-2"}`}
         >
           {iconMap[item.title]}
 

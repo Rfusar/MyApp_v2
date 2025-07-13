@@ -15,7 +15,7 @@ const DivDescription = () => (
         <h3 className="text-xl ubuntu">{ConfigText.Subtitle}</h3>
       </div>
       <div className="p-4">
-        <article>{ConfigText.Article}</article>
+        <article className="text-sm">{ConfigText.Article}</article>
       </div>
     </section>
   </div>
@@ -27,25 +27,27 @@ const DivLogin = () => {
 
   async function InitPackage() {
     const hash = await bcrypt.hash(password, 10);
-    const res = await fetch("/api/initpackage", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ azienda, password: hash }),
-    });
-    const json = await res.json();
-    console.log(json);
+    //const res = await fetch("/api/initpackage", {
+    //  method: "POST",
+    //  headers: { "Content-Type": "application/json" },
+    //  body: JSON.stringify({ azienda, password: hash }),
+    //});
+    //const json = await res.json();
+    //console.log(json);
+    console.log(azienda)
+    console.log(hash)
   }
 
   return (
     <div className="row-span-1 p-5 relative">
       <Input
         label={{ field: "Nome Azienda", errorDescription: "Insert a valid Username" }}
-        options={{ type: "text", value: azienda, onChange: (e: any) => setAzienda(e.target.value) }}
+        options={{ type: "text", onChange: (e: any) => setAzienda(e.target.value) }}
         mandatory={true}
       />
       <Input
         label={{ field: "Admin Password", errorDescription: "Insert a valid Password" }}
-        options={{ type: "password", placeholder: "Nuova Password", value: password, onChange: (e: any) => setPassword(e.target.value) }}
+        options={{ type: "password", placeholder: "Nuova Password", onChange: (e: any) => setPassword(e.target.value) }}
         mandatory={true}
       />
       <button

@@ -27,7 +27,9 @@ func main() {
 		}
 	}()
 
-	http.Handle("/dbmyapp", handlers.GetBatchsHandler(database))
+	http.Handle("/dbmyapp/b2b", handlers.GetDatabase(database))
+	http.Handle("/dbmyapp/system", handlers.GetStatusSystem(database))
+
 	http.Handle("/initpackage", handlers.InitPackage(database))
 
 	server := &http.Server{

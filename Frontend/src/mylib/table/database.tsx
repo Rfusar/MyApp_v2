@@ -1,8 +1,8 @@
-import { Batch } from "@/types/Dati";
 import { QueryInsert, BodyRequestDB } from "@/types/DB";
+import {TableProps, TableFilterProps} from "@/types/Dati"
 
 
-const TableFilter = ({ getData }: TableFilterProps): JSX.Element => {
+const TableFilter = ({ getData }: TableFilterProps) => {
     const insert: BodyRequestDB = {
         collection: "Users",
         query: {
@@ -26,40 +26,50 @@ const TableFilter = ({ getData }: TableFilterProps): JSX.Element => {
         <option value="30s">30sec</option>
         <option value="-1">Tempo Reale</option>
       </select>
-      <button onClick={async ()=> await getData(view)} className="p-2 bg-blue-500 text-white rounded cursor-pointer">
+      <button onClick={async ()=> {
+          if(getData){ await getData(view)}
+      }} className="p-2 bg-blue-500 text-white rounded cursor-pointer">
         Ricarica
       </button>
-      <button onClick={async ()=> await getData(insert)} className="p-2 bg-green-500 text-white rounded cursor-pointer">
+      <button onClick={async ()=> {
+          if(getData){ await getData(insert)}
+      }} className="p-2 bg-green-500 text-white rounded cursor-pointer">
         Aggiungi Record
       </button>
       <button className="p-2 bg-red-500 text-white rounded">
       Elimina Record
       </button>
+      <select className="p-2 bg-purple-700 text-white rounded">
+        <option>Inserisci collezione</option>
+        <option>Users</option>
+        <option>Services</option>
+        <option>Provider</option>
+      </select>
     </section>
   );
 };
 
-export default function Table({ data, getData }: TableProps): JSX.Element {
+export default function Table({ data, getData }: TableProps) {
   return (
     <>
       <TableFilter getData={getData} />
       <table className="w-full border-collapse">
         <thead>
           <tr className="bg-black rounded">
-            <th className="p-1 text-white">ID</th>
-            <th className="p-1 text-white">Name</th>
-            <th className="p-1 text-white">Email</th>
-            <th className="p-1 text-white">Active</th>
+            <th className="p-1 text-white">NameID</th>
+            <th className="p-1 text-white">Password</th>
+            <th className="p-1 text-white">CompanyName</th>
+            <th className="p-1 text-white">Group</th>
           </tr>
         </thead>
         <tbody>
           {data ? (
             data.map((e, i) => (
               <tr key={i}>
-                <td className="text-black border p-1">{(e as any)._id ?? "-"}</td>
-                <td className="text-black border p-1">{e.name}</td>
-                <td className="text-black border p-1">{e.email}</td>
-                <td className="text-black border p-1">{e.isActive ? "Yes" : "No"}</td>
+                <td className="text-black border p-1">{e.NameID ?? "-"}</td>
+                <td className="text-black border p-1">{e.Password}</td>
+                <td className="text-black border p-1">{e.CompanyName}</td>
+                <td className="text-black border p-1">{e.Group}</td>
               </tr>
             ))
           ) : (
