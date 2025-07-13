@@ -4,7 +4,7 @@
         "view": {
             "collection": "Users",
             "query": {
-                "method": "view",
+                "method": "get",
                 "many": true
             }
         },

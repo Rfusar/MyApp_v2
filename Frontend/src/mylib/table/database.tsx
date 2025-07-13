@@ -1,5 +1,6 @@
 import { QueryInsert, BodyRequestDB } from "@/types/DB";
 import {TableProps, TableFilterProps} from "@/types/Dati"
+import Link from "next/link"
 
 
 const TableFilter = ({ getData }: TableFilterProps) => {
@@ -31,11 +32,9 @@ const TableFilter = ({ getData }: TableFilterProps) => {
       }} className="p-2 bg-blue-500 text-white rounded cursor-pointer">
         Ricarica
       </button>
-      <button onClick={async ()=> {
-          if(getData){ await getData(insert)}
-      }} className="p-2 bg-green-500 text-white rounded cursor-pointer">
+      <Link href="/users/config" className="p-2 bg-green-500 text-white rounded cursor-pointer">
         Aggiungi Record
-      </button>
+      </Link>
       <button className="p-2 bg-red-500 text-white rounded">
       Elimina Record
       </button>

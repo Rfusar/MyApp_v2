@@ -22,7 +22,10 @@ args = cmd.parse_args()
 
 db = Dbtest()
 
-if args.system == "collections": db.SYS_Collections()
+if args.system == "collections": db.SYS_Collections(save=True)
+
+if args.test == "insert": db.Insert(save=True)
+elif args.test == "view": db.View(save=True)
 
 
 
