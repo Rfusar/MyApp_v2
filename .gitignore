@@ -3,4 +3,5 @@ Frontend/node_modules/
 Frontend/.env.local
 TEST
 .env
+mongodb-data
 Backend/exaple

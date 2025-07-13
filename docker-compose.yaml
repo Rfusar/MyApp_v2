@@ -13,16 +13,24 @@ services:
       - app-network
 
   backend:
-    image: rfusaro12276/backend
+    #image: rfusaro12276/backend #PROD
+    build:
+      context: ./Backend
     ports:
       - "8080:8080"
+    env_file:
+      - .env
+    environment:
+      - MONGODB_URL=${MONGODB_URL}
     depends_on:
       - db
     networks:
       - app-network
 
   frontend:
-    image: rfusaro12276/frontend
+    #image: rfusaro12276/frontend
+    build:
+      context: ./Frontend
     ports:
       - "3000:3000"
     depends_on:

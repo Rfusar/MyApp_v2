@@ -6,7 +6,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json(); // <-- ricevi il body JSON
     console.log(body)
 
-    const res = await apiClient.post('/dbmyapp', body);
+    const res = await apiClient.post('/dbmyapp/b2b', body);
 
     return NextResponse.json(res.data);
   } catch (error) {

@@ -2,6 +2,7 @@ package db
 
 import (
 	"fmt"
+	"strings"
 	"context"
 
 	"go.mongodb.org/mongo-driver/bson"
@@ -16,14 +17,29 @@ type ClientDB struct {
 	Col          *mongo.Collection
 }
 
+//*INIT PACKAGE
+func isNamespaceExistsError(err error) bool {
+	return err != nil && strings.Contains(err.Error(), "NamespaceExists")
+}
+var collections = []string{ "Users", "Services", "APIs", }
 func Init(uri, name string) (*ClientDB, error) {
 	clientOpts := options.Client().ApplyURI(uri)
 	client, err := mongo.Connect(context.TODO(), clientOpts)
 	if err != nil {
 		return nil, err
 	}
+
+	db := client.Database(name)
+
+	for _, col := range collections {
+		err := db.CreateCollection(context.TODO(), col)
+		if err != nil && !isNamespaceExistsError(err) {
+			return nil, err
+		}
+	}
 	return &ClientDB{DBConnection: uri, DBName: name, Client: client}, nil
 }
+
 
 func (db *ClientDB) Ping() error {
 	if db.Client == nil {

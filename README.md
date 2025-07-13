@@ -20,7 +20,9 @@ For the repository of the docker image [Click here](https://hub.docker.com/repos
 ## MyB2B Local
 ```bash
 git clone git@github.com:Rfusar/MyApp_v2.git
+echo "NEXT_PUBLIC_API_URL=http://127.0.0.1:8080" > ./Frontend/.env.local
 ```
+
 
 
 ## MyB2B Docker
@@ -56,6 +58,11 @@ services:
       - "3000:3000"
     depends_on:
       - backend
+    env_file:
+      - .env
+    environment:
+    #Create .env env_file
+      - NEXT_PUBLIC_API_URL=${NEXT_PUBLIC_API_URL}
     networks:
       - app-network
 
