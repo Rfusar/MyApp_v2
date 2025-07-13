@@ -1,0 +1,17 @@
+{
+    "Style": "flex flex-row justify-around items-center w-full bg-white h-[8%]",
+    "Data": {
+        "Header": {"logo": "", "title":"MySite"},
+        "Session": [
+            {
+                "title": "Msg",
+                "submenu": [
+                    "Send", "Read"
+                ]
+            },
+            {
+                "title": "Profile"
+            }
+        ]
+    }
+}

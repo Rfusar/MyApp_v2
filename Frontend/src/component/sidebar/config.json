@@ -1,0 +1,21 @@
+{
+    "Style": "w-[15%] bg-[#0d1117] border-1 border-gray-100 border-solid h-screen shadow-sm",
+    "Data": {
+        "Header": {"logo": "", "title":"MySite"},
+        "list": [
+            {
+                "title": "Batchs",
+                "link": "/",
+                "submenu": [
+                ]
+            },
+            {
+                "title": "Settings",
+                "link": "",
+                "submenu": [
+                    {"title": "Profile", "link": "/settings/profile"}
+                ]
+            }
+        ]
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "sidebar": {
+       "container": "pl-5 w-full flex flex-col",
+       "element": "w-full h-full  flex flex-row items-center rounded-lg p-2 hover:bg-white/10"
+    }
+}
