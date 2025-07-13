@@ -13,13 +13,12 @@ import (
 	"app/exaple/middleware"
 )
 var (
-	url_DB string
+	url_DB = "mongodb://172.17.0.2:27017"
 	local = false
 )
 
 func main() {
-	if(local){ url_DB = "mongodb://172.17.0.2:27017" } 
-	else {
+	if !local {
 		url_DB = os.Getenv("MONGODB_URL")
 		if url_DB == "" {
 			log.Fatal("MONGODB_URL non definito")
