@@ -14,7 +14,7 @@ import (
 )
 var (
 	url_DB = "mongodb://172.17.0.2:27017"
-	local = false
+	local = true
 )
 
 func main() {

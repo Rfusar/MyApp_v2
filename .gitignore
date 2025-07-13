@@ -1,7 +1,7 @@
 Frontend/.next/
 Frontend/node_modules/
 Frontend/.env.local
-TEST
+__pycache__
 .env
 mongodb-data
 Backend/exaple
