@@ -4,14 +4,6 @@ import Link from "next/link"
 
 
 const TableFilter = ({ getData }: TableFilterProps) => {
-    const insert: BodyRequestDB = {
-        collection: "Users",
-        query: {
-            method: "insert",
-            many: false,
-            data: {"utente1":"A"}
-        }
-    }
     const view: BodyRequestDB = {
         collection: "Users",
         query: {

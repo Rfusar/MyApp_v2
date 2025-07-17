@@ -11,7 +11,7 @@ export default function Home() {
   const { openModal } = useModal();
 
   async function getData(body:Record<string,any>): Promise<void> {
-    const res = await fetch("/api/db", { 
+    const res = await fetch("/api/db/b2b", { 
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(body)

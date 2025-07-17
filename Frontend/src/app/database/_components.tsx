@@ -1,23 +1,6 @@
 import React from "react"
-import {GetData} from "./_async";
-
-interface QueryProps {
-    select: "get" | "update" | "insert" | "delete";
-    model: "MongoDB";
-    collection?: string;
-    query: "";
-}
-
-interface FiltersProps {
-    form: QueryProps;
-    handleChange: (field:string, value: string)=>void;
-}
-interface BtnFilter {
-    form: QueryProps;
-    GetData: (form: QueryProps, setForm: React.Dispatch<React.SetStateAction<QueryProps>>)=>void;
-    setForm: React.Dispatch<React.SetStateAction<QueryProps>>;
-}
-
+import {GetData} from "./_server";
+import {QueryProps, FiltersProps, BtnFilter} from "./_types"
 
 export const Method = ({form, handleChange}:FiltersProps)=>{
       return (
@@ -80,11 +63,15 @@ export const TextArea = ({form}:QueryProps)=>{
     )
 }
 
-export const Button = ({form, GetData, setForm}:BtnFilter)=>{
+export const Button = ({onClick}: {onClick:()=>void})=>{
+    //const myform: QueryProps = {
+    //    collection: "Users",
+    //    query: {method:"get", many:true}
+    //}
     return (
       <div className="flex justify-end">
         <button
-          onClick={()=> GetData(form, setForm)}
+            onClick={onClick}
           className="px-5 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
         >
           Esegui query
