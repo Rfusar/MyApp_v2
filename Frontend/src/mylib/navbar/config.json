@@ -1,0 +1,7 @@
+{
+    "Style": "flex flex-row justify-between items-center w-full bg-white h-[8%]",
+    "Data": {
+        "Header": {"logo": "", "title":""},
+        "Session": []
+    }
+}

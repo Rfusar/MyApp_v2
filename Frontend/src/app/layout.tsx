@@ -2,13 +2,13 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import Sidebar from "@/component/sidebar/init";
-import Navbar from "@/component/navbar/init";
-import Login from "@/component/login/init";
+import Sidebar from "@/mylib/sidebar/init";
+import Navbar from "@/mylib/navbar/init";
+import Login from "@/mylib/login/init";
 import { ModalProvider } from "@/context/popup";
 
 export const metadata: Metadata = {
-  title: "Test Nextjs",
+  title: "My Business APP",
   description: "",
 };
 

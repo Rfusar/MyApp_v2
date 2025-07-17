@@ -1,0 +1,10 @@
+{
+    "system": {
+        "dpi": 300,
+        "MinConfidance": 0.70
+    },
+    "folders": {
+        "input": "/home/riccardo/Scrivania/TestApp/Services/Documents/test",
+        "log": "/home/riccardo/Scrivania/TestApp/Services/Documents/LOG"
+    }
+}

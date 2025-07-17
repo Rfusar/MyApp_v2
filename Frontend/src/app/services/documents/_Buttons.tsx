@@ -9,14 +9,14 @@ function handleFileChange(e: React.ChangeEvent<HTMLInputElement>){
 };
 
 
-export default function UploadButton (){
+export const UploadButton = () => {
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   //*Simula il click
   const handleClick = () => { fileInputRef.current?.click(); };
 
   return (
-    <div className="row-span-1" >
+    <div>
       <button
         onClick={handleClick}
         className="bg-blue-700 text-white font-blank text-sm p-2 rounded cursor-pointer"
@@ -33,3 +33,26 @@ export default function UploadButton (){
     </div>
   );
 };
+
+export const ExtractionButton = ()=>{
+  return (
+    <div>
+      <button
+        className="bg-red-700 text-white font-blank text-sm p-2 rounded cursor-pointer"
+      >
+        Estrai dati dal Documento
+      </button>
+    </div>
+  );
+}
+export const ClassificationButton = ()=>{
+  return (
+    <div>
+      <button
+        className="bg-yellow-400 text-black font-blank text-sm p-2 rounded cursor-pointer"
+      >
+        Classifica il Documento
+      </button>
+    </div>
+  );
+}
