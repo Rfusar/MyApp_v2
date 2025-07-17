@@ -1,10 +1,13 @@
 {
     "system": {
         "dpi": 300,
-        "MinConfidance": 0.70
+        "MinConfidance": 0.70,
+        "onlyClassifications": true,
+        "allText": true
     },
     "folders": {
         "input": "/home/riccardo/Scrivania/TestApp/Services/Documents/test",
+        "output": "/home/riccardo/Scrivania/TestApp/Services/Documents/results",
         "log": "/home/riccardo/Scrivania/TestApp/Services/Documents/LOG"
     }
 }
